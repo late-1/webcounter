@@ -14,3 +14,14 @@ When button pressed twice the counter is two
     Click  button >> text=Paina
     Click  button >> text=Paina
     Get Text  body  *=  nappia painettu 2 kertaa
+
+*** Keywords ***
+Open And Configure Browser
+    IF  $HEADLESS == 'true'
+        New Browser  browser=${BROWSER}  headless=True
+    ELSE
+        New Browser  browser=${BROWSER}  headless=False  slowMo=${DELAY}
+    END
+    New Context
+    New Page  ${HOME_URL}
+    Click  text=Nollaa
